@@ -1,0 +1,22 @@
+<h1>Contact Page</h1>
+<div class="well well-sm">
+  If you have any question or feedback please leave a message with your email address.
+</div>
+{{#if responseMessage}}
+  <div class="alert alert-success">{{responseMessage}}</div>
+{{/if}}
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label for="email">Your email address*:</label>
+      {{input id="email" type="email" value=emailAddress class="form-control" placeholder="Please type your e-mail address."}}
+    </div>
+    <div class="form-group">
+      <label for="message">Your message*:</label>
+      {{textarea id="message" class="form-control" placeholder="Your message. (At least 5 characters.)" rows="7" value=message}}
+    </div>
+    <button class="btn btn-success" disabled={{isDisabled}}  {{action 'sendFeedback'}}>
+      Send
+    </button>
+  </div>
+</div>
