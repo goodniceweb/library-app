@@ -20,14 +20,19 @@
       <ul class="nav navbar-nav navbar-right">
         {{#nav-link-to 'about'}}About{{/nav-link-to}}
         {{#nav-link-to 'contact'}}Contact{{/nav-link-to}}
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            {{#nav-link-to 'admin.invitations'}}Invitations{{/nav-link-to}}
-            {{#nav-link-to 'admin.contacts'}}Contacts{{/nav-link-to}}
-            {{#nav-link-to 'admin.seeder'}}Seeder{{/nav-link-to}}
-          </ul>
-        </li>
+        {{#if session.isAuthenticated}}
+          <li {{action 'invalidateSession'}}><a href="">Logout</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              {{#nav-link-to 'admin.invitations'}}Invitations{{/nav-link-to}}
+              {{#nav-link-to 'admin.contacts'}}Contacts{{/nav-link-to}}
+              {{#nav-link-to 'admin.seeder'}}Seeder{{/nav-link-to}}
+            </ul>
+          </li>
+        {{else}}
+          {{#nav-link-to 'login'}}Login{{/nav-link-to}}
+        {{/if}}
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

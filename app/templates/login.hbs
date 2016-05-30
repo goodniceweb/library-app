@@ -1,0 +1,19 @@
+<h1>Login Page</h1>
+<div class="well well-sm">
+  Use scampwork@gmail.com / password1
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <form {{action 'authenticate' on="submit"}}>
+      <div class="form-group">
+        <label>Your email address*:</label>
+        {{input type="email" class="form-control" placeholder="Your email address" value=email}}
+      </div>
+      <div class="form-group">
+        <label>Your message*:</label>
+        {{input type="password" class="form-control" placeholder="Your email address" value=password}}
+      </div>
+      <button class="btn btn-success" type="submit">Send</button>
+    </form>
+  </div>
+</div>

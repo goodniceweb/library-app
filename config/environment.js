@@ -25,6 +25,17 @@ module.exports = function(environment) {
     ENV.APP.LOG_TRANSITIONS = true;
     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+		ENV['apiserver']   = 'localhost:3030';
+		ENV['simple-auth'] = {
+			authorizer           : 'devise',
+			crossOriginWhitelist : [
+				'http://localhost:3000',
+				ENV['apiserver']
+			]
+		};
+		ENV['simple-auth-devise'] = {
+			serverTokenEndpoint : ENV['apiserver'] + '/users/sign_in'
+		};
   }
 
   if (environment === 'test') {

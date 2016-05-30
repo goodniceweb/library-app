@@ -1,4 +1,9 @@
 <div class="container">
   {{partial 'navbar'}}
+  {{#if session.currentUser}}
+    <div class="well well-sm">
+        Logged in as {{session.currentUser.email}}
+    </div>
+  {{/if}}
   {{outlet}}
 </div>
