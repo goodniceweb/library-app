@@ -6,6 +6,9 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    contentSecurityPolicy: {
+      'connect-src': "*"
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -18,6 +21,10 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+  ENV['simple-auth'] = {
+    authorizer : 'authorizer:application' // 'simple-auth-authorizer:devise'
+  };
+  ENV['simple-auth'].crossOriginWhitelist = ['*'];
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
@@ -25,17 +32,17 @@ module.exports = function(environment) {
     ENV.APP.LOG_TRANSITIONS = true;
     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
-		ENV['apiserver']   = 'localhost:3030';
-		ENV['simple-auth'] = {
-			authorizer           : 'devise',
-			crossOriginWhitelist : [
-				'http://localhost:3000',
-				ENV['apiserver']
-			]
-		};
-		ENV['simple-auth-devise'] = {
-			serverTokenEndpoint : ENV['apiserver'] + '/users/sign_in'
-		};
+		// ENV['apiserver']   = 'localhost:3030';
+		// ENV['simple-auth'] = {
+		// 	authorizer           : 'devise',
+		// 	crossOriginWhitelist : [
+		// 		'http://localhost:3000',
+		// 		ENV['apiserver']
+		// 	]
+		// };
+		// ENV['simple-auth-devise'] = {
+		// 	serverTokenEndpoint : ENV['apiserver'] + '/users/sign_in'
+		// };
   }
 
   if (environment === 'test') {
